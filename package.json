@@ -1,0 +1,15 @@
+{
+  "name": "wd66p-mp1-proto",
+  "version": "1.0.0",
+  "description": "MP1 Prototype",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mark Roland C. Alueta",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.62.1",
+    "typescript": "^5.0.4"
+  }
+}
