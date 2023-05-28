@@ -2,14 +2,24 @@
   "name": "wd66p-mp1-proto",
   "version": "1.0.0",
   "description": "MP1 Prototype",
-  "main": "index.js",
+  "main": "./serve.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server": "http-server -c-1"
   },
   "author": "Mark Roland C. Alueta",
   "license": "ISC",
   "devDependencies": {
+    "@types/aos": "^3.0.4",
+    "@types/node": "^20.2.3",
+    "aos": "^2.3.4",
+    "prettier-plugin-tailwindcss": "^0.3.0",
     "sass": "^1.62.1",
+    "tailwindcss": "^3.3.2",
     "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "flowbite": "^1.6.5",
+    "tailwind-scrollbar": "^3.0.1",
+    "tw-elements": "^1.0.0-beta2"
   }
 }

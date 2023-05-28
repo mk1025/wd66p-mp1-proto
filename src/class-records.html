@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Class Records Page</title>
+    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script
+      src="https://kit.fontawesome.com/7369d6167e.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body class="flex h-screen w-full flex-row scrollbar-thin">
+    <!-- NAVBAR -->
+    <nav
+      class="flex min-h-screen min-w-max flex-col flex-wrap bg-gray-700 text-white"
+    >
+      <div class="grid h-min w-full gap-5 p-3 md:p-5">
+        <button>
+          <i
+            class="fa-solid fa-user h-[2rem] w-[2rem] justify-self-center rounded-full bg-white py-3 align-middle text-xs text-gray-700 md:h-[4rem] md:w-[4rem] md:py-5 md:text-xl"
+          ></i>
+        </button>
+        <span class="hidden text-center font-semibold md:inline"
+          >Mark Roland Alueta
+        </span>
+      </div>
+
+      <div class="mr-5 mt-10 grid w-full grid-flow-row">
+        <a href="dashboard.html">
+          <button
+            class="grid w-full grid-flow-col grid-cols-4 items-center py-4 text-lg font-semibold hover:bg-gray-800"
+          >
+            <i
+              class="fa-solid fa-table-columns col-span-full text-center md:col-span-1"
+            ></i>
+            <div class="col-span-3 hidden pr-5 text-left md:inline">
+              Dashboard
+            </div>
+          </button>
+        </a>
+        <a href="class-records.html">
+          <button
+            class="grid w-full grid-flow-col grid-cols-4 items-center bg-gray-950 py-4 text-lg font-semibold"
+          >
+            <i
+              class="fa-solid fa-book col-span-full text-center md:col-span-1"
+            ></i>
+            <div class="col-span-3 hidden pr-5 text-left md:inline">
+              Class Records
+            </div>
+          </button>
+        </a>
+        <a href="activities.html">
+          <button
+            class="grid w-full grid-flow-col grid-cols-4 items-center py-4 text-lg font-semibold hover:bg-gray-800"
+          >
+            <i
+              class="fa-solid fa-list-check col-span-full text-center md:col-span-1"
+            ></i>
+            <div class="col-span-3 hidden pr-5 text-left md:inline">
+              Activities
+            </div>
+          </button>
+        </a>
+        <a href="students.html">
+          <button
+            class="grid w-full grid-flow-col grid-cols-4 items-center py-4 text-lg font-semibold hover:bg-gray-800"
+          >
+            <i
+              class="fa-solid fa-users col-span-full text-center md:col-span-1"
+            ></i>
+            <div class="col-span-3 hidden pr-5 text-left md:inline">
+              Students
+            </div>
+          </button>
+        </a>
+        <a href="transmutations.html">
+          <button
+            class="grid w-full grid-flow-col grid-cols-4 items-center py-4 text-lg font-semibold hover:bg-gray-800"
+          >
+            <i
+              class="fa-solid fa-calculator col-span-full text-center md:col-span-1"
+            ></i>
+            <div class="col-span-3 hidden pr-5 text-left md:inline">
+              Transmutations
+            </div>
+          </button>
+        </a>
+
+        <button
+          data-modal-target="logout-modal"
+          data-modal-toggle="logout-modal"
+          class="grid w-full grid-flow-col grid-cols-4 items-center py-4 text-lg font-semibold hover:bg-gray-800"
+        >
+          <i
+            class="fa-solid fa-right-from-bracket col-span-full text-center md:col-span-1"
+          ></i>
+          <div class="col-span-3 hidden pr-5 text-left md:inline">Log Out</div>
+        </button>
+      </div>
+    </nav>
+
+    <!-- CONTENT -->
+    <section class="flex-grow overflow-y-auto p-2 md:p-5">
+      <div class="mb-5 flex flex-wrap gap-3">
+        <h1 class="text-lg font-bold text-gray-500 lg:text-4xl">
+          Class Records
+        </h1>
+      </div>
+      <div class="flex w-full flex-row flex-wrap gap-5">
+        <!-- SEARCH -->
+        <div class="flex flex-wrap gap-2">
+          <label for="Search-Record">
+            <input
+              class="w-full rounded-lg font-sans"
+              type="text"
+              name="Seach-Record"
+              id="Search-Record"
+              placeholder="Search Class Record"
+            />
+          </label>
+          <button
+            class="mb-2 mr-2 rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200"
+          >
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+          <button
+            data-modal-target="new-record-modal"
+            data-modal-toggle="new-record-modal"
+            class="mb-2 mr-2 rounded-lg bg-green-500 px-5 py-2.5 text-sm font-medium text-white shadow-lg hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+          >
+            <i class="fa-solid fa-circle-plus"></i>&nbsp; Add New Class Record
+          </button>
+        </div>
+        <!-- Table  -->
+        <div class="w-full">
+          <div class="relative overflow-x-auto shadow-lg">
+            <table
+              class="text-md h-full w-full text-left text-gray-500 scrollbar-thin scrollbar-thumb-purple-200"
+            >
+              <thead class="text-md bg-purple-500 uppercase text-white">
+                <tr>
+                  <th scope="col" class="px-6 py-3">Class Record</th>
+                  <th scope="col" class="px-6 py-3">School Year</th>
+                  <th scope="col" class="px-6 py-3">Section</th>
+                  <th scope="col" class="px-6 py-3">Students</th>
+                  <th scope="col" class="px-6 py-3">Transmutation</th>
+                  <th scope="col" class="px-6 py-3">Components</th>
+                  <th scope="col" class="px-6 py-3">Options</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row" class="px-6 py-4 font-medium text-gray-900">
+                    Media and Information Literacy
+                  </th>
+                  <td class="px-6 py-4">Aug 2022 - Feb 2023</td>
+                  <td class="px-6 py-4">Aries</td>
+                  <td class="px-6 py-4">25</td>
+                  <td class="px-6 py-4">Default - Standard</td>
+                  <td class="h-max px-6 py-4">
+                    <button
+                      data-popover-target="table-data-1"
+                      data-popover-placement="left"
+                      data-popover-trigger="click"
+                      class="mb-2 mr-2 flex w-full items-center justify-between rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-600"
+                    >
+                      <span>3</span>
+                      <i class="fa-regular fa-circle-question"></i>
+                    </button>
+                    <div
+                      data-popover
+                      id="table-data-1"
+                      role="tooltip"
+                      class="invisible absolute z-50 inline-block w-64 rounded-lg border border-gray-200 bg-white text-sm text-gray-500 opacity-0 shadow-sm transition-opacity duration-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400"
+                    >
+                      <div
+                        class="rounded-t-lg border-b border-gray-200 bg-gray-100 px-3 py-2 dark:border-gray-600 dark:bg-gray-700"
+                      >
+                        <h3 class="font-semibold text-gray-900 dark:text-white">
+                          Components
+                        </h3>
+                      </div>
+                      <div class="px-3 py-2">
+                        <ul>
+                          <li>Written Works - 25%</li>
+                          <li>Performance Works - 50%</li>
+                          <li>Exam - 25%</li>
+                        </ul>
+                      </div>
+                      <div data-popper-arrow></div>
+                    </div>
+                  </td>
+                  <td class="flex px-6 py-4">
+                    <a href="class-record-open.html">
+                      <button
+                      class="mb-2 mr-2 whitespace-nowrap rounded-lg bg-amber-500 px-5 py-2.5 text-sm font-medium text-white hover:bg-amber-600 focus:outline-none focus:ring-4 focus:ring-amber-300"
+                    >
+                      Open <i class="fa-solid fa-folder-open"></i>
+                    </button>
+                    </a>
+                    
+                    <button
+                      data-modal-target="edit-record-modal"
+                      data-modal-toggle="edit-record-modal"
+                      class="mb-2 mr-2 whitespace-nowrap rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300"
+                    >
+                      Edit <i class="fa-solid fa-gear"></i>
+                    </button>
+                    <button
+                      data-modal-target="delete-record-modal"
+                      data-modal-toggle="delete-record-modal"
+                      class="mb-2 mr-2 whitespace-nowrap rounded-lg bg-red-500 px-5 py-2.5 font-semibold text-white hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-100"
+                    >
+                      Delete <i class="fa-solid fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODALS -->
+    <section>
+      <!-- NEW CLASS RECORD -->
+      <div
+        id="new-record-modal"
+        data-modal-backdrop="static"
+        tabindex="-1"
+        aria-hidden="true"
+        data-modal-placement="top-center"
+        class="fixed left-0 right-0 top-0 z-50 hidden h-[calc(100%-1rem)] max-h-full w-full overflow-y-auto overflow-x-hidden p-4 scrollbar-thin scrollbar-thumb-purple-300 md:inset-0"
+      >
+        <div class="relative max-h-full w-full max-w-2xl">
+          <div class="relative rounded-lg bg-white shadow dark:bg-gray-700">
+            <div
+              class="flex items-start justify-between rounded-t border-b p-4 dark:border-gray-600"
+            >
+              <h3 class="text-xl font-semibold text-gray-500 dark:text-white">
+                Create a New Class Record
+              </h3>
+              <button
+                type="button"
+                class="ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
+                data-modal-hide="new-record-modal"
+              >
+                <i class="fa-solid fa-x"></i>
+              </button>
+            </div>
+
+            <div class="space-y-6 p-6">
+              <!-- Input for New Class Record -->
+              <div>
+                <label
+                  for="new-record-name"
+                  class="mb-2 block text-sm font-medium text-red-700 dark:text-red-500"
+                  >Name of Class Record:</label
+                >
+                <input
+                  type="text"
+                  id="new-record-name"
+                  class="block w-full rounded-lg border border-red-500 bg-red-50 p-2.5 text-sm text-red-900 placeholder-red-700 focus:border-red-500 focus:ring-red-500 dark:border-red-500 dark:bg-gray-700 dark:text-red-500 dark:placeholder-red-500"
+                  placeholder="Name"
+                />
+                <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+                  <span class="font-medium">*A name is required</span>
+                </p>
+              </div>
+              <!-- Input for School Year -->
+              <div>
+                <label for="" class="mb-2 text-sm font-medium text-gray-600"
+                  >School Year:</label
+                >
+                <div date-rangepicker class="flex items-center">
+                  <div class="relative">
+                    <div
+                      class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="h-5 w-5 text-gray-500 dark:text-gray-400"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </div>
+                    <input
+                      name="start"
+                      type="text"
+                      class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 pl-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                      placeholder="Select date start"
+                    />
+                  </div>
+                  <span class="mx-4 text-gray-500">to</span>
+                  <div class="relative">
+                    <div
+                      class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="h-5 w-5 text-gray-500 dark:text-gray-400"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </div>
+                    <input
+                      name="end"
+                      type="text"
+                      class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 pl-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                      placeholder="Select date end"
+                    />
+                  </div>
+                </div>
+              </div>
+              <!-- Input for Section -->
+              <div class="flex">
+                <button
+                  id="dropdown-button"
+                  data-dropdown-toggle="dropdown"
+                  class="z-10 inline-flex flex-shrink-0 items-center rounded-l-lg border border-gray-300 bg-gray-100 px-4 py-2.5 text-center text-sm font-medium text-gray-900 hover:bg-gray-200 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-700"
+                  type="button"
+                >
+                  <i class="fa-solid fa-plus"></i>&nbsp; New
+                  <svg
+                    aria-hidden="true"
+                    class="ml-1 h-4 w-4"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button>
+                <div
+                  id="dropdown"
+                  class="z-10 hidden w-44 divide-y divide-gray-100 rounded-lg bg-white shadow dark:bg-gray-700"
+                >
+                  <ul
+                    class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                    aria-labelledby="dropdown-button"
+                  >
+                    <li>
+                      <button
+                        type="button"
+                        class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                      >
+                        Aries
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        type="button"
+                        class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                      >
+                        Capricorn
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        type="button"
+                        class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                      >
+                        Gemini
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        type="button"
+                        class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                      >
+                        Leo
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+                <div class="relative w-full">
+                  <input
+                    type="search"
+                    id="search-dropdown"
+                    class="z-20 block w-full rounded-r-lg border border-l-2 border-gray-300 border-l-gray-50 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:border-l-gray-700 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500"
+                    placeholder="Enter Section Name or Choose from Existing Names"
+                    required
+                  />
+                </div>
+              </div>
+
+              <!-- Components -->
+              <h1 class="text-lg font-semibold">Set the Components</h1>
+
+              <div class="grid grid-flow-row gap-1">
+                <div
+                  class="hidden grid-flow-col items-center text-center text-xs font-medium lg:grid lg:text-base"
+                >
+                  <div class="col-span-1">Order</div>
+                  <div class="col-span-1">Component Name</div>
+                  <div class="col-span-1"></div>
+                  <div class="col-span-1">Weighted Score</div>
+                  <div class="col-span-1"></div>
+                </div>
+                <div class="grid grid-flow-col gap-2">
+                  <select
+                    class="w-max rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 lg:w-full"
+                  >
+                    <option selected>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>...</option>
+                  </select>
+                  <input
+                    type="text"
+                    id="Component-Name-1"
+                    class="w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                    placeholder="Enter Component Name"
+                    value="Written Works"
+                    required
+                  />
+                  <div class="hidden items-center justify-center lg:grid">
+                    <i class="fa-solid fa-equals"></i>
+                  </div>
+                  <select
+                    class="w-max rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 lg:w-full"
+                  >
+                    <option selected>0%</option>
+                    <option>5%</option>
+                    <option>10%</option>
+                    <option>15%</option>
+                    <option>20%</option>
+                    <option>...</option>
+                  </select>
+                  <button
+                    class="w-[2.5rem] rounded-lg bg-red-500 text-white hover:bg-red-800"
+                  >
+                    <i class="fa-solid fa-trash-can"></i>
+                  </button>
+                </div>
+                <div class="grid grid-flow-col gap-2">
+                  <select
+                    class="w-max rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 lg:w-full"
+                  >
+                    <option selected>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>...</option>
+                  </select>
+                  <input
+                    type="text"
+                    id="Component-Name-2"
+                    class="w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                    placeholder="Enter Component Name"
+                    required
+                  />
+                  <div class="hidden items-center justify-center lg:grid">
+                    <i class="fa-solid fa-equals"></i>
+                  </div>
+                  <select
+                    class="w-max rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 lg:w-full"
+                  >
+                    <option selected>0%</option>
+                    <option>5%</option>
+                    <option>10%</option>
+                    <option>15%</option>
+                    <option>20%</option>
+                    <option>...</option>
+                  </select>
+                  <button
+                    class="w-[2.5rem] rounded-lg bg-red-500 text-white hover:bg-red-800"
+                  >
+                    <i class="fa-solid fa-trash-can"></i>
+                  </button>
+                </div>
+                <div class="grid grid-flow-col gap-2">
+                  <select
+                    class="w-max rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 lg:w-full"
+                  >
+                    <option selected>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>...</option>
+                  </select>
+                  <input
+                    type="text"
+                    id="Component-Name-2"
+                    class="w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                    placeholder="Enter Component Name"
+                    required
+                  />
+                  <div class="hidden items-center justify-center lg:grid">
+                    <i class="fa-solid fa-equals"></i>
+                  </div>
+                  <select
+                    class="w-max rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 lg:w-full"
+                  >
+                    <option selected>0%</option>
+                    <option>5%</option>
+                    <option>10%</option>
+                    <option>15%</option>
+                    <option>20%</option>
+                    <option>...</option>
+                  </select>
+                  <button
+                    class="w-[2.5rem] rounded-lg bg-red-500 text-white hover:bg-red-800"
+                  >
+                    <i class="fa-solid fa-trash-can"></i>
+                  </button>
+                </div>
+                <h1 class="font-semibold text-red-500">
+                  Overall sum of the weighted score should be 100% and not 0%
+                </h1>
+              </div>
+              <button
+                class="w-max rounded-lg bg-green-500 p-2 font-semibold text-white hover:bg-green-700"
+              >
+                <i class="fa-solid fa-circle-plus"></i> Component
+              </button>
+
+              <!-- Students -->
+              <h1 class="text-lg font-semibold">Choose Students:</h1>
+              <label
+                for="default-search"
+                class="sr-only mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Search</label
+              >
+              <div class="relative">
+                <div
+                  class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
+                >
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <input
+                  type="search"
+                  id="student-search"
+                  class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 pl-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                  placeholder="Search Existing Student"
+                  required
+                />
+              </div>
+              <h1 class="flex gap-2">
+                <span class="font-semibold">Male:</span><span>3</span>
+                <span class="font-semibold">Female:</span><span>2</span>
+                <span class="font-semibold">Count:</span><span>5</span>
+              </h1>
+              <ul class="flex flex-row flex-wrap gap-2 text-white">
+                <li class="rounded-lg bg-blue-500 p-2">
+                  Alueta, Mark Roland
+                  <button><i class="fa-solid fa-circle-xmark"></i></button>
+                </li>
+                <li class="rounded-lg bg-blue-500 p-2">
+                  Domingo, Winifred
+                  <button><i class="fa-solid fa-circle-xmark"></i></button>
+                </li>
+                <li class="rounded-lg bg-blue-500 p-2">
+                  Reenie, Ariana
+                  <button><i class="fa-solid fa-circle-xmark"></i></button>
+                </li>
+                <li class="rounded-lg bg-blue-500 p-2">
+                  Solomon, Erik
+                  <button><i class="fa-solid fa-circle-xmark"></i></button>
+                </li>
+                <li class="rounded-lg bg-blue-500 p-2">
+                  Sybil, Kathie
+                  <button><i class="fa-solid fa-circle-xmark"></i></button>
+                </li>
+              </ul>
+            </div>
+
+            <div
+              class="flex items-center space-x-2 rounded-b border-t border-gray-200 p-6 dark:border-gray-600"
+            >
+              <button
+                data-modal-hide="new-record-modal"
+                type="button"
+                class="rounded-lg bg-green-500 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Create
+              </button>
+              <button
+                data-modal-hide="new-record-modal"
+                type="button"
+                class="rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-gray-500 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-600"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- EDIT CLASS RECORD -->
+      <div
+        id="edit-record-modal"
+        data-modal-backdrop="static"
+        tabindex="-1"
+        aria-hidden="true"
+        data-modal-placement="top-center"
+        class="fixed left-0 right-0 top-0 z-50 hidden h-[calc(100%-1rem)] max-h-full w-full overflow-y-auto overflow-x-hidden p-4 scrollbar-thin scrollbar-thumb-purple-300 md:inset-0"
+      >
+        <div class="relative max-h-full w-full max-w-2xl">
+          <div class="relative rounded-lg bg-white shadow dark:bg-gray-700">
+            <div
+              class="flex items-start justify-between rounded-t border-b p-4 dark:border-gray-600"
+            >
+              <h3 class="text-xl font-semibold text-gray-500 dark:text-white">
+                Update the Class Record
+              </h3>
+              <button
+                type="button"
+                class="ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
+                data-modal-hide="edit-record-modal"
+              >
+                <i class="fa-solid fa-x"></i>
+              </button>
+            </div>
+
+            <div class="space-y-6 p-6">
+              <!-- Input for New Class Record -->
+              <div>
+                <label
+                  for="edit-record-name"
+                  class="mb-2 block text-sm font-medium text-gray-700"
+                  >Name of Class Record:</label
+                >
+                <input
+                  type="text"
+                  id="edit-record-name"
+                  class="block w-full rounded-lg border p-2.5 text-sm"
+                  placeholder="Name of Class Record"
+                  value="Media and Information Literacy"
+                />
+              </div>
+              <!-- Input for School Year -->
+              <div>
+                <label for="" class="mb-2 text-sm font-medium text-gray-600"
+                  >School Year:</label
+                >
+                <div date-rangepicker class="flex items-center">
+                  <div class="relative">
+                    <div
+                      class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="h-5 w-5 text-gray-500 dark:text-gray-400"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </div>
+                    <input
+                      name="start"
+                      type="text"
+                      class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 pl-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                      placeholder="Select date start"
+                    />
+                  </div>
+                  <span class="mx-4 text-gray-500">to</span>
+                  <div class="relative">
+                    <div
+                      class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="h-5 w-5 text-gray-500 dark:text-gray-400"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </div>
+                    <input
+                      name="end"
+                      type="text"
+                      class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 pl-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                      placeholder="Select date end"
+                    />
+                  </div>
+                </div>
+              </div>
+              <!-- Input for Section -->
+              <div class="flex">
+                <button
+                  id="dropdown-button"
+                  data-dropdown-toggle="dropdown"
+                  class="z-10 inline-flex flex-shrink-0 items-center rounded-l-lg border border-gray-300 bg-gray-100 px-4 py-2.5 text-center text-sm font-medium text-gray-900 hover:bg-gray-200 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-700"
+                  type="button"
+                >
+                  <i class="fa-solid fa-plus"></i>&nbsp; New
+                  <svg
+                    aria-hidden="true"
+                    class="ml-1 h-4 w-4"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button>
+                <div
+                  id="dropdown"
+                  class="z-10 hidden w-44 divide-y divide-gray-100 rounded-lg bg-white shadow dark:bg-gray-700"
+                >
+                  <ul
+                    class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                    aria-labelledby="dropdown-button"
+                  >
+                    <li>
+                      <button
+                        type="button"
+                        class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                      >
+                        Aries
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        type="button"
+                        class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                      >
+                        Capricorn
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        type="button"
+                        class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                      >
+                        Gemini
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        type="button"
+                        class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                      >
+                        Leo
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+                <div class="relative w-full">
+                  <input
+                    type="search"
+                    id="search-dropdown"
+                    class="z-20 block w-full rounded-r-lg border border-l-2 border-gray-300 border-l-gray-50 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:border-l-gray-700 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500"
+                    placeholder="Enter Section Name or Choose from Existing Names"
+                    required
+                  />
+                </div>
+              </div>
+
+              <!-- Components -->
+              <h1 class="text-lg font-semibold">Set the Components</h1>
+
+              <div class="grid grid-flow-row gap-1">
+                <div
+                  class="hidden grid-flow-col items-center text-center text-xs font-medium lg:grid lg:text-base"
+                >
+                  <div class="col-span-1">Order</div>
+                  <div class="col-span-1">Component Name</div>
+                  <div class="col-span-1"></div>
+                  <div class="col-span-1">Weighted Score</div>
+                  <div class="col-span-1"></div>
+                </div>
+                <div class="grid grid-flow-col gap-2">
+                  <select
+                    class="w-max rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 lg:w-full"
+                  >
+                    <option selected>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>...</option>
+                  </select>
+                  <input
+                    type="text"
+                    id="Component-Name-1"
+                    class="w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                    placeholder="Enter Component Name"
+                    value="Written Works"
+                    required
+                  />
+                  <div class="hidden items-center justify-center lg:grid">
+                    <i class="fa-solid fa-equals"></i>
+                  </div>
+                  <select
+                    class="w-max rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 lg:w-full"
+                  >
+                    <option>0%</option>
+                    <option>5%</option>
+                    <option>10%</option>
+                    <option>15%</option>
+                    <option>20%</option>
+                    <option selected>25%</option>
+                    <option>30%</option>
+                    <option>...</option>
+                  </select>
+                  <button
+                    class="w-[2.5rem] rounded-lg bg-red-500 text-white hover:bg-red-800"
+                  >
+                    <i class="fa-solid fa-trash-can"></i>
+                  </button>
+                </div>
+                <div class="grid grid-flow-col gap-2">
+                  <select
+                    class="w-max rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 lg:w-full"
+                  >
+                    <option>1</option>
+                    <option selected>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>...</option>
+                  </select>
+                  <input
+                    type="text"
+                    id="Component-Name-2"
+                    class="w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                    placeholder="Enter Component Name"
+                    value="Performance Works"
+                    required
+                  />
+                  <div class="hidden items-center justify-center lg:grid">
+                    <i class="fa-solid fa-equals"></i>
+                  </div>
+                  <select
+                    class="w-max rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 lg:w-full"
+                  >
+                    <option>0%</option>
+                    <option>5%</option>
+                    <option>10%</option>
+                    <option>15%</option>
+                    <option>20%</option>
+                    <option>25%</option>
+                    <option>30%</option>
+                    <option>35%</option>
+                    <option>40%</option>
+                    <option>45%</option>
+                    <option selected>50%</option>
+                    <option>...</option>
+                  </select>
+                  <button
+                    class="w-[2.5rem] rounded-lg bg-red-500 text-white hover:bg-red-800"
+                  >
+                    <i class="fa-solid fa-trash-can"></i>
+                  </button>
+                </div>
+                <div class="grid grid-flow-col gap-2">
+                  <select
+                    class="w-max rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 lg:w-full"
+                  >
+                    <option>1</option>
+                    <option>2</option>
+                    <option selected>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>...</option>
+                  </select>
+                  <input
+                    type="text"
+                    id="Component-Name-2"
+                    class="w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                    placeholder="Enter Component Name"
+                    value="Exam"
+                    required
+                  />
+                  <div class="hidden items-center justify-center lg:grid">
+                    <i class="fa-solid fa-equals"></i>
+                  </div>
+                  <select
+                    class="w-max rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 lg:w-full"
+                  >
+                    <option>0%</option>
+                    <option>5%</option>
+                    <option>10%</option>
+                    <option>15%</option>
+                    <option>20%</option>
+                    <option selected>25%</option>
+                    <option>...</option>
+                  </select>
+                  <button
+                    class="w-[2.5rem] rounded-lg bg-red-500 text-white hover:bg-red-800"
+                  >
+                    <i class="fa-solid fa-trash-can"></i>
+                  </button>
+                </div>
+                <h1 class="font-semibold text-red-500">
+                  Overall sum of the weighted score should be 100% and not 0%
+                </h1>
+              </div>
+              <button
+                class="w-max rounded-lg bg-green-500 p-2 font-semibold text-white hover:bg-green-700"
+              >
+                <i class="fa-solid fa-circle-plus"></i> Component
+              </button>
+
+              <!-- Students -->
+              <h1 class="text-lg font-semibold">Choose Students:</h1>
+              <label
+                for="default-search"
+                class="sr-only mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Search</label
+              >
+              <div class="relative">
+                <div
+                  class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
+                >
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <input
+                  type="search"
+                  id="student-search"
+                  class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 pl-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                  placeholder="Search Existing Student"
+                  required
+                />
+              </div>
+              <h1 class="flex gap-2">
+                <span class="font-semibold">Male:</span><span>3</span>
+                <span class="font-semibold">Female:</span><span>2</span>
+                <span class="font-semibold">Count:</span><span>5</span>
+              </h1>
+              <ul class="flex flex-row flex-wrap gap-2 text-white">
+                <li class="rounded-lg bg-blue-500 p-2">
+                  Alueta, Mark Roland
+                  <button><i class="fa-solid fa-circle-xmark"></i></button>
+                </li>
+                <li class="rounded-lg bg-blue-500 p-2">
+                  Domingo, Winifred
+                  <button><i class="fa-solid fa-circle-xmark"></i></button>
+                </li>
+                <li class="rounded-lg bg-blue-500 p-2">
+                  Reenie, Ariana
+                  <button><i class="fa-solid fa-circle-xmark"></i></button>
+                </li>
+                <li class="rounded-lg bg-blue-500 p-2">
+                  Solomon, Erik
+                  <button><i class="fa-solid fa-circle-xmark"></i></button>
+                </li>
+                <li class="rounded-lg bg-blue-500 p-2">
+                  Sybil, Kathie
+                  <button><i class="fa-solid fa-circle-xmark"></i></button>
+                </li>
+              </ul>
+            </div>
+
+            <div
+              class="flex items-center space-x-2 rounded-b border-t border-gray-200 p-6 dark:border-gray-600"
+            >
+              <button
+                data-modal-hide="edit-record-modal"
+                type="button"
+                class="rounded-lg bg-green-500 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Save
+              </button>
+              <button
+                data-modal-hide="edit-record-modal"
+                type="button"
+                class="rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-gray-500 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-600"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- OPEN CLASS RECORD -->
+
+      <!-- DELETE CLASS RECORD -->
+      <div
+        id="delete-record-modal"
+        tabindex="-1"
+        class="fixed left-0 right-0 top-0 z-50 hidden h-[calc(100%-1rem)] max-h-full overflow-y-auto overflow-x-hidden p-4 md:inset-0"
+      >
+        <div class="relative max-h-full w-full max-w-md">
+          <div class="relative rounded-lg bg-white shadow dark:bg-gray-700">
+            <button
+              type="button"
+              class="absolute right-2.5 top-3 ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-white"
+              data-modal-hide="delete-record-modal"
+            >
+              <svg
+                aria-hidden="true"
+                class="h-5 w-5"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+              <span class="sr-only">Close modal</span>
+            </button>
+            <div class="p-6 text-center">
+              <svg
+                aria-hidden="true"
+                class="mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+              <h3
+                class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400"
+              >
+                Are you sure you want to delete [Class Record Name]?
+              </h3>
+
+              <button
+                data-modal-hide="delete-record-modal"
+                type="button"
+                class="mr-2 inline-flex items-center rounded-lg bg-red-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800"
+              >
+                Yes, I'm sure
+              </button>
+
+              <button
+                data-modal-hide="delete-record-modal"
+                type="button"
+                class="rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-500 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-600"
+              >
+                No, cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- LOG OUT  -->
+      <div
+        id="logout-modal"
+        tabindex="-1"
+        class="fixed left-0 right-0 top-0 z-50 hidden h-[calc(100%-1rem)] max-h-full overflow-y-auto overflow-x-hidden p-4 md:inset-0"
+      >
+        <div class="relative max-h-full w-full max-w-md">
+          <div class="relative rounded-lg bg-white shadow dark:bg-gray-700">
+            <button
+              type="button"
+              class="absolute right-2.5 top-3 ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-white"
+              data-modal-hide="logout-modal"
+            >
+              <svg
+                aria-hidden="true"
+                class="h-5 w-5"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+              <span class="sr-only">Close modal</span>
+            </button>
+            <div class="p-6 text-center">
+              <svg
+                aria-hidden="true"
+                class="mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+              <h3
+                class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400"
+              >
+                Are you sure you want to log out?
+              </h3>
+              <a href="index.html">
+                <button
+                  data-modal-hide="logout-modal"
+                  type="button"
+                  class="mr-2 inline-flex items-center rounded-lg bg-red-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800"
+                >
+                  Yes, I'm sure
+                </button>
+              </a>
+
+              <button
+                data-modal-hide="logout-modal"
+                type="button"
+                class="rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-500 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-600"
+              >
+                No, cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCRIPTS -->
+    <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
+    <script src="../node_modules/flowbite/dist/datepicker.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+  </body>
+</html>

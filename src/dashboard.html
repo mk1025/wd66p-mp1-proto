@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Page</title>
+    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script
+      src="https://kit.fontawesome.com/7369d6167e.js"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="./js/index.js"></script>
+  </head>
+  <body class="fixed flex h-full w-full flex-row">
+    <!-- NAVBAR -->
+    <nav class="flex h-screen w-max flex-col flex-wrap bg-gray-700 text-white">
+      <div class="grid h-min w-full gap-5 p-3 md:p-5">
+        <button>
+          <i
+            class="fa-solid fa-user h-[2rem] w-[2rem] justify-self-center rounded-full bg-white py-3 align-middle text-xs text-gray-700 md:h-[4rem] md:w-[4rem] md:py-5 md:text-xl"
+          ></i>
+        </button>
+        <span class="hidden text-center font-semibold md:inline"
+          >Mark Roland Alueta
+        </span>
+      </div>
+
+      <div class="mt-10 grid w-full grid-flow-row">
+        <a href="dashboard.html">
+          <button
+            class="grid w-full grid-flow-col grid-cols-4 items-center bg-gray-950 py-4 text-lg font-semibold"
+          >
+            <i
+              class="fa-solid fa-table-columns col-span-full text-center md:col-span-1"
+            ></i>
+            <span class="col-span-3 hidden text-left md:inline">Dashboard</span>
+          </button>
+        </a>
+        <a href="class-records.html">
+          <button
+            class="grid w-full grid-flow-col grid-cols-4 items-center py-4 text-lg font-semibold hover:bg-gray-800"
+          >
+            <i
+              class="fa-solid fa-book col-span-full text-center md:col-span-1"
+            ></i>
+            <span class="col-span-3 hidden text-left md:inline"
+              >Class Records</span
+            >
+          </button>
+        </a>
+        <a href="activities.html">
+          <button
+            class="grid w-full grid-flow-col grid-cols-4 items-center py-4 text-lg font-semibold hover:bg-gray-800"
+          >
+            <i
+              class="fa-solid fa-list-check col-span-full text-center md:col-span-1"
+            ></i>
+            <div class="col-span-3 hidden pr-5 text-left md:inline">
+              Activities
+            </div>
+          </button>
+        </a>
+        <a href="students.html">
+          <button
+            class="grid w-full grid-flow-col grid-cols-4 items-center py-4 text-lg font-semibold hover:bg-gray-800"
+          >
+            <i
+              class="fa-solid fa-users col-span-full text-center md:col-span-1"
+            ></i>
+            <span class="col-span-3 hidden text-left md:inline">Students</span>
+          </button>
+        </a>
+        <a href="transmutations">
+          <button
+            class="grid w-full grid-flow-col grid-cols-4 items-center py-4 text-lg font-semibold hover:bg-gray-800"
+          >
+            <i
+              class="fa-solid fa-calculator col-span-full text-center md:col-span-1"
+            ></i>
+            <span class="col-span-3 hidden text-left md:inline"
+              >Transmutations</span
+            >
+          </button>
+        </a>
+
+        <button
+          data-modal-target="logout-modal"
+          data-modal-toggle="logout-modal"
+          class="grid w-full grid-flow-col grid-cols-4 items-center py-4 text-lg font-semibold hover:bg-gray-800"
+        >
+          <i
+            class="fa-solid fa-right-from-bracket col-span-full text-center md:col-span-1"
+          ></i>
+          <div class="col-span-3 hidden pr-5 text-left md:inline">Log Out</div>
+        </button>
+      </div>
+    </nav>
+
+    <!-- CONTENT -->
+    <section class="flex-grow overflow-y-auto p-2 md:p-5">
+      <div class="mb-5 flex flex-wrap gap-3">
+        <h1 class="text-lg font-bold text-gray-500 lg:text-4xl">Dashboard</h1>
+        <div class="text-black">
+          <label for="dashboard-search">
+            <input
+              id="dashboard-search"
+              class="rounded-lg font-sans"
+              type="text"
+              placeholder="Search"
+            />
+          </label>
+          <button
+            class="mb-2 mr-2 rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200"
+          >
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+        <div></div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="flex max-h-screen w-full flex-row flex-wrap gap-5">
+        <!-- Highest Grade Mention -->
+        <div class="h-max w-full shadow-lg md:w-[18rem]">
+          <div id="default-carousel" class="relative" data-carousel="slide">
+            <!-- Carousel wrapper -->
+            <div
+              class="md:h-50 relative h-56 overflow-hidden rounded-lg bg-purple-500 shadow-lg"
+            >
+              <!-- Item 1 -->
+              <div
+                class="duration-400 hidden px-8 ease-in-out"
+                data-carousel-item
+              >
+                <div class="h-full w-full whitespace-nowrap p-5 text-white">
+                  <h1 class="text-2xl font-bold">John Smith</h1>
+                  <h3>From <span class="font-semibold">Aries</span> ranked</h3>
+                  <h1 class="text-center text-3xl font-bold text-yellow-200">
+                    1st <i class="fa-sharp fa-solid fa-medal"></i>
+                  </h1>
+                  <h1 class="text-center">overall in</h1>
+                  <h1 class="text-center font-semibold">Filipino</h1>
+                </div>
+              </div>
+              <!-- Item 2 -->
+              <div
+                class="duration-400 hidden px-8 ease-in-out"
+                data-carousel-item
+              >
+                <div class="h-full w-full whitespace-nowrap p-5 text-white">
+                  <h1 class="text-2xl font-bold">Dougal Josceline</h1>
+                  <h3>From <span class="font-semibold">Aries</span> ranked</h3>
+                  <h1 class="text-center text-3xl font-bold text-yellow-200">
+                    2nd <i class="fa-sharp fa-solid fa-medal"></i>
+                  </h1>
+                  <h1 class="text-center">overall in</h1>
+                  <h1 class="text-center font-semibold">Filipino</h1>
+                </div>
+              </div>
+              <!-- Item 3 -->
+              <div
+                class="duration-400 hidden px-8 ease-in-out"
+                data-carousel-item
+              >
+                <div class="h-full w-full whitespace-nowrap p-5 text-white">
+                  <h1 class="text-2xl font-bold">Christine Salazar</h1>
+                  <h3>From <span class="font-semibold">Aries</span> ranked</h3>
+                  <h1 class="text-center text-3xl font-bold text-yellow-200">
+                    3rd <i class="fa-sharp fa-solid fa-medal"></i>
+                  </h1>
+                  <h1 class="text-center">overall in</h1>
+                  <h1 class="text-center font-semibold">Filipino</h1>
+                </div>
+              </div>
+            </div>
+            <!-- Slider indicators -->
+            <div
+              class="absolute bottom-5 left-1/2 z-30 flex -translate-x-1/2 space-x-3"
+            >
+              <button
+                type="button"
+                class="h-3 w-3 rounded-full"
+                aria-current="true"
+                aria-label="Slide 1"
+                data-carousel-slide-to="0"
+              ></button>
+              <button
+                type="button"
+                class="h-3 w-3 rounded-full"
+                aria-current="false"
+                aria-label="Slide 2"
+                data-carousel-slide-to="1"
+              ></button>
+              <button
+                type="button"
+                class="h-3 w-3 rounded-full"
+                aria-current="false"
+                aria-label="Slide 3"
+                data-carousel-slide-to="2"
+              ></button>
+            </div>
+            <!-- Slider controls -->
+            <button
+              type="button"
+              class="group absolute left-0 top-0 z-30 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none"
+              data-carousel-prev
+            >
+              <span
+                class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-white/30 group-hover:bg-white/50 group-focus:outline-none group-focus:ring-4 group-focus:ring-white dark:bg-gray-800/30 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70 sm:h-8 sm:w-8"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="h-5 w-5 text-white dark:text-gray-800 sm:h-6 sm:w-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 19l-7-7 7-7"
+                  ></path>
+                </svg>
+                <span class="sr-only">Previous</span>
+              </span>
+            </button>
+            <button
+              type="button"
+              class="group absolute right-0 top-0 z-30 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none"
+              data-carousel-next
+            >
+              <span
+                class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-white/30 group-hover:bg-white/50 group-focus:outline-none group-focus:ring-4 group-focus:ring-white dark:bg-gray-800/30 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70 sm:h-8 sm:w-8"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="h-5 w-5 text-white dark:text-gray-800 sm:h-6 sm:w-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                  ></path>
+                </svg>
+                <span class="sr-only">Next</span>
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <!-- CHART  -->
+        <div class="w-max rounded-lg border border-gray-300 p-4 shadow-lg">
+          <canvas id="Average-Grade-Chart"></canvas>
+        </div>
+        <div class="w-max rounded-lg border border-gray-300 p-4 shadow-lg">
+          <canvas id="Noticeable-Chart"></canvas>
+        </div>
+        <div class="w-max rounded-lg border border-gray-300 p-4 shadow-lg">
+          <canvas id="Exam-Chart"></canvas>
+        </div>
+        <!-- <div class="bg-green-500">test</div> -->
+      </div>
+
+      <!-- DIAL -->
+      <div data-dial-init class="group fixed bottom-6 right-6">
+        <div
+          id="speed-dial-menu-click"
+          class="mb-4 flex hidden flex-col items-center space-y-2"
+        >
+          <button
+            type="button"
+            data-tooltip-target="tooltip-record"
+            data-tooltip-placement="left"
+            class="flex h-[52px] w-[52px] items-center justify-center rounded-full border border-gray-200 bg-white text-gray-500 shadow-sm hover:bg-gray-50 hover:text-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-400"
+          >
+            <i
+              class="fa-solid fa-book col-span-full text-center md:col-span-1"
+            ></i>
+            <span class="sr-only">Class Record</span>
+          </button>
+          <div
+            id="tooltip-record"
+            role="tooltip"
+            class="tooltip invisible absolute z-10 inline-block w-auto rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
+          >
+            Class Record
+            <div class="tooltip-arrow" data-popper-arrow></div>
+          </div>
+          <button
+            type="button"
+            data-tooltip-target="tooltip-student"
+            data-tooltip-placement="left"
+            class="flex h-[52px] w-[52px] items-center justify-center rounded-full border border-gray-200 bg-white text-gray-500 shadow-sm hover:bg-gray-50 hover:text-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-400"
+          >
+            <i
+              class="fa-solid fa-users col-span-full text-center md:col-span-1"
+            ></i>
+            <span class="sr-only">Student</span>
+          </button>
+          <div
+            id="tooltip-student"
+            role="tooltip"
+            class="tooltip invisible absolute z-10 inline-block w-auto rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
+          >
+            Student
+            <div class="tooltip-arrow" data-popper-arrow></div>
+          </div>
+          <button
+            type="button"
+            data-tooltip-target="tooltip-activity"
+            data-tooltip-placement="left"
+            class="flex h-[52px] w-[52px] items-center justify-center rounded-full border border-gray-200 bg-white text-gray-500 shadow-sm hover:bg-gray-50 hover:text-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-400"
+          >
+            <i
+              class="fa-solid fa-list-check col-span-full text-center md:col-span-1"
+            ></i>
+            <span class="sr-only">Activity</span>
+          </button>
+          <div
+            id="tooltip-activity"
+            role="tooltip"
+            class="tooltip invisible absolute z-10 inline-block w-auto rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
+          >
+            Activity
+            <div class="tooltip-arrow" data-popper-arrow></div>
+          </div>
+          <button
+            type="button"
+            data-tooltip-target="tooltip-transmutation"
+            data-tooltip-placement="left"
+            class="flex h-[52px] w-[52px] items-center justify-center rounded-full border border-gray-200 bg-white text-gray-500 shadow-sm hover:bg-gray-50 hover:text-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-400"
+          >
+            <i
+              class="fa-solid fa-calculator col-span-full text-center md:col-span-1"
+            ></i>
+            <span class="sr-only">Transmutation</span>
+          </button>
+          <div
+            id="tooltip-transmutation"
+            role="tooltip"
+            class="tooltip invisible absolute z-10 inline-block w-auto rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
+          >
+            Transmutation
+            <div class="tooltip-arrow" data-popper-arrow></div>
+          </div>
+        </div>
+        <button
+          type="button"
+          data-dial-toggle="speed-dial-menu-click"
+          data-dial-trigger="{click|hover}"
+          aria-controls="speed-dial-menu-click"
+          aria-expanded="false"
+          class="flex h-14 w-14 items-center justify-center rounded-full bg-purple-500 text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        >
+          <i
+            class="fa-solid fa-plus transition-transform group-hover:rotate-45"
+          ></i>
+          <span class="sr-only">Open actions menu</span>
+        </button>
+      </div>
+    </section>
+
+    <!--  MODALS -->
+    <section>
+      <!--  -->
+      <!-- LOG OUT -->
+      <div
+        id="logout-modal"
+        tabindex="-1"
+        class="fixed left-0 right-0 top-0 z-50 hidden h-[calc(100%-1rem)] max-h-full overflow-y-auto overflow-x-hidden p-4 md:inset-0"
+      >
+        <div class="relative max-h-full w-full max-w-md">
+          <div class="relative rounded-lg bg-white shadow dark:bg-gray-700">
+            <button
+              type="button"
+              class="absolute right-2.5 top-3 ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-white"
+              data-modal-hide="popup-modal"
+            >
+              <svg
+                aria-hidden="true"
+                class="h-5 w-5"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+              <span class="sr-only">Close modal</span>
+            </button>
+            <div class="p-6 text-center">
+              <svg
+                aria-hidden="true"
+                class="mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+              <h3
+                class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400"
+              >
+                Are you sure you want to log out?
+              </h3>
+              <a href="index.html">
+                <button
+                  data-modal-hide="logout-modal"
+                  type="button"
+                  class="mr-2 inline-flex items-center rounded-lg bg-red-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800"
+                >
+                  Yes, I'm sure
+                </button>
+              </a>
+
+              <button
+                data-modal-hide="logout-modal"
+                type="button"
+                class="rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-500 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-600"
+              >
+                No, cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCRIPTS -->
+    <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      const agc = document.getElementById("Average-Grade-Chart");
+      const nch = document.getElementById("Noticeable-Chart");
+      const ech = document.getElementById("Exam-Chart");
+
+      new Chart(agc, {
+        type: "bar",
+        data: {
+          labels: ["Aries", "Capricorn", "Gemini", "Leo"],
+          datasets: [
+            {
+              label: "Grade Percentile: Filipino",
+              data: [84, 93, 91, 85],
+              borderWidth: 0.5,
+              backgroundColor: [
+                "rgb(249 128 128)",
+                "rgb(118 169 250)",
+                "rgb(49 196 141)",
+                "rgb(251 191 36)",
+              ],
+            },
+          ],
+        },
+        options: {
+          // responsive: true,
+          maintainAspectRatio: false,
+        },
+      });
+      new Chart(nch, {
+        type: "line",
+        data: {
+          labels: ["Aries", "Capricorn", "Gemini", "Leo"],
+          datasets: [
+            {
+              label: "Exam - Media and Information Literacy",
+              data: [18, 22, 15, 30, 11],
+              borderWidth: 1,
+              borderColor: "lightblue",
+              backgroundColor: [
+                "rgb(249 128 128)",
+                "rgb(118 169 250)",
+                "rgb(49 196 141)",
+                "rgb(251 191 36)",
+              ],
+            },
+          ],
+        },
+        options: {
+          // responsive: true,
+          maintainAspectRatio: false,
+        },
+      });
+      new Chart(ech, {
+        type: "doughnut",
+        data: {
+          labels: [
+            "Activity 1",
+            "Activity 2",
+            "Activity 3",
+            "Activity 4",
+            "Activity 5",
+            "Activity 6",
+          ],
+          datasets: [
+            {
+              label: "Aries - Activities Curve",
+              data: [18, 22, 15, 30, 11, 20, 21],
+              borderWidth: 1,
+              borderColor: "lightblue",
+              backgroundColor: [
+                "rgb(249 128 128)",
+                "rgb(118 169 250)",
+                "rgb(49 196 141)",
+                "rgb(251 191 36)",
+              ],
+            },
+          ],
+        },
+        options: {
+          // responsive: true,
+          maintainAspectRatio: false,
+        },
+      });
+    </script>
+  </body>
+</html>
