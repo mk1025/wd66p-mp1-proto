@@ -7,26 +7,181 @@
     <title>Tracking</title>
     <link rel="stylesheet" href="./css/index.css" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <script type="module" src="./js/index.js"></script>
+    <!-- <script type="module" src="./js/index.js"></script> -->
     <script
       src="https://kit.fontawesome.com/7369d6167e.js"
       crossorigin="anonymous"
     ></script>
   </head>
-  <body class="bg-white">
+  <body class="min-h-screen w-full bg-neutral-600">
     <div
-      class="container mx-auto my-10 rounded-xl border-t-2 border-purple-500 bg-white p-10 drop-shadow-xl"
+      class="container mx-auto my-10 w-full table-fixed border-t-2 border-purple-500 bg-white p-5 drop-shadow-xl lg:p-10"
     >
-      <div class="flex w-full flex-col items-center gap-5">
-        <label class="font-medium text-gray-500"
+      <div class="flex w-full flex-col gap-5">
+        <div class="text-lg text-gray-500">
+          <a href="index.html"
+            ><button>
+              <i class="fa-solid fa-right-from-bracket"></i> Exit
+            </button></a
+          >
+        </div>
+        <label class="self-center font-medium text-gray-500"
           >Enter your ID
           <i class="fa-solid fa-circle-question cursor-pointer"></i
         ></label>
         <input
           type="text"
-          class="w-[12rem] rounded-lg text-center"
+          class="w-[12rem] content-center self-center justify-self-center rounded-lg text-center"
           placeholder="XXXXX-XXXXX"
+          maxlength="10"
+          minlength="10"
         />
+      </div>
+
+      <hr class="my-8 h-px border-0 bg-gray-200" />
+
+      <div class="flex w-full flex-row flex-wrap items-baseline gap-5">
+        <h1 class="w-full text-center text-6xl font-bold text-gray-600">
+          Smith, John
+        </h1>
+        <h2 class="w-full text-center font-medium text-neutral-500">
+          From Aries - S.Y. Aug 2022 to Jun 2023
+        </h2>
+        <div
+          class="mt-40 grid w-full grid-flow-row justify-center gap-1 text-center text-gray-500"
+        >
+          <img
+            src="https://xsgames.co/randomusers/avatar.php?g=male"
+            class="h-[8rem] rounded-full border border-gray-500 shadow-lg drop-shadow-lg"
+          />
+          <h2 class="text-lg font-medium">Randy Pearson</h2>
+          <h2 class="">Subject Teacher</h2>
+        </div>
+
+        <div class="w-full overflow-x-auto">
+          <table
+            class="mt-10 w-full border-collapse overflow-x-auto rounded border border-gray-300 text-left lg:table-fixed"
+          >
+            <thead class="sticky bg-purple-500 uppercase text-white">
+              <tr>
+                <th scope="col" class="px-2 py-4">Subject</th>
+                <th scope="col" class="px-2 py-4">Component</th>
+                <th scope="col" class="px-2 py-4">Activity</th>
+                <th scope="col" class="px-2 py-4">Type</th>
+                <th scope="col" class="px-2 py-4">Score</th>
+                <th scope="col" class="px-2 py-4">Percentage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="px-2 py-5 font-semibold">
+                  Media and Information Literacy
+                </td>
+                <td class="px-2 py-5">Written Works (25%)</td>
+                <td class="px-2 py-5">Types of Communication</td>
+                <td class="px-2 py-5">Quiz</td>
+                <td class="px-2 py-5">13 / 20</td>
+                <td class="px-2 py-5">
+                  65% <i class="fa-solid fa-right-long"></i> 16%
+                </td>
+              </tr>
+              <tr>
+                <td class="px-2 py-5 font-semibold"></td>
+                <td class="px-2 py-5"></td>
+                <td class="px-2 py-5">Media Literacy</td>
+                <td class="px-2 py-5">Quiz</td>
+                <td class="px-2 py-5">11 / 15</td>
+                <td class="px-2 py-5">
+                  73% <i class="fa-solid fa-right-long"></i> 18%
+                </td>
+              </tr>
+              <tr>
+                <td class="px-2 py-5 font-semibold"></td>
+                <td class="px-2 py-5"></td>
+                <td class="px-2 py-5">Evolution of Media</td>
+                <td class="px-2 py-5">Assignment</td>
+                <td class="px-2 py-5">18 / 20</td>
+                <td class="px-2 py-5">
+                  90% <i class="fa-solid fa-right-long"></i> 23%
+                </td>
+              </tr>
+              <tr class="whitespace-nowrap font-semibold">
+                <td class="px-2 py-5"></td>
+                <td class="px-2 py-5"></td>
+                <td class="px-2 py-5"></td>
+                <td class="bg-purple-50 px-2 py-5 text-right">Total:</td>
+                <td class="bg-purple-50 px-2 py-5">42 / 55</td>
+                <td
+                  class="whitespace-nowrap bg-purple-50 px-2 py-5 font-semibold"
+                >
+                  76% <i class="fa-solid fa-right-long"></i> 19% out of 25%
+                </td>
+              </tr>
+              <tr>
+                <td class="px-2 py-5 font-semibold"></td>
+                <td class="px-2 py-5">Performance Works (50%)</td>
+                <td class="px-2 py-5">Art Project</td>
+                <td class="px-2 py-5">Project</td>
+                <td class="px-2 py-5">35 / 50</td>
+                <td class="px-2 py-5">
+                  70% <i class="fa-solid fa-right-long"></i> 35%
+                </td>
+              </tr>
+              <tr>
+                <td class="px-2 py-5 font-semibold"></td>
+                <td class="px-2 py-5"></td>
+                <td class="px-2 py-5">Examples of Communication</td>
+                <td class="px-2 py-5">Recitation</td>
+                <td class="px-2 py-5">6 / 10</td>
+                <td class="px-2 py-5">
+                  60% <i class="fa-solid fa-right-long"></i> 30%
+                </td>
+              </tr>
+              <tr class="whitespace-nowrap font-semibold">
+                <td class="px-2 py-5"></td>
+                <td class="px-2 py-5"></td>
+                <td class="px-2 py-5"></td>
+                <td class="bg-purple-50 px-2 py-5 text-right">Total:</td>
+                <td class="bg-purple-50 px-2 py-5">41 / 60</td>
+                <td
+                  class="whitespace-nowrap bg-purple-50 px-2 py-5 font-semibold"
+                >
+                  68% <i class="fa-solid fa-right-long"></i> 34% out of 50%
+                </td>
+              </tr>
+              <tr>
+                <td class="px-2 py-5 font-semibold"></td>
+                <td class="px-2 py-5">Exam (25%)</td>
+                <td class="px-2 py-5">Quarter 1 Exam</td>
+                <td class="px-2 py-5">Exam</td>
+                <td class="px-2 py-5">41 / 50</td>
+                <td class="px-2 py-5">
+                  70% <i class="fa-solid fa-right-long"></i> 35%
+                </td>
+              </tr>
+              <tr class="whitespace-nowrap font-semibold">
+                <td class="px-2 py-5"></td>
+                <td class="px-2 py-5"></td>
+                <td class="px-2 py-5"></td>
+                <td class="bg-purple-50 px-2 py-5 text-right">Total:</td>
+                <td class="bg-purple-50 px-2 py-5">41 / 50</td>
+                <td
+                  class="whitespace-nowrap bg-purple-50 px-2 py-5 font-semibold"
+                >
+                  82% <i class="fa-solid fa-right-long"></i> 21% out of 25%
+                </td>
+              </tr>
+              <tr class="bg-purple-300 font-bold">
+                <td colspan="4" class="px-2 py-5"></td>
+
+                <td colspan="2" class="px-2 py-5">
+                  Weighted Percentage: 74%
+                  <i class="fa-solid fa-right-long"></i> Final Grade of 89%
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
     <!-- SCRIPTS -->
